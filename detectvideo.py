@@ -88,11 +88,15 @@ def main(_argv):
         exec_time = curr_time - prev_time
         result = np.asarray(image)
         info = "time: %.2f ms" % (1000 * exec_time)
-        print(info)
+
+        # fps
+        fps = int(1 / exec_time)
+        print(f"fps: {fps}")
 
         result = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
         cv2.namedWindow("result", cv2.WINDOW_AUTOSIZE)
         cv2.imshow("result", result)
+
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
